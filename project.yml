@@ -1,0 +1,89 @@
+name: ModuleDemo
+attributes:
+  ORGANIZATIONNAME: ModuleDemo
+options:
+  bundleIdPrefix: com.module.demo
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "13.0"
+targets:
+  ModuleDemo:
+    type: application
+    platform: iOS
+    attributes:
+      ProvisioningStyle: Automatic
+    sources:
+      - App/Sources
+    settings:
+      INFOPLIST_FILE: "App/Sources/Info.plist"
+      PRODUCT_BUNDLE_IDENTIFIER: "com.module.app"
+    dependencies:
+      - target: Cash
+      - target: Investing
+      - target: History
+      - target: UI
+      - target: Utils
+  ModuleDemoTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - App/Tests
+    dependencies:
+      - target: ModuleDemo
+
+  # Core Targets
+
+  UI:
+    type: framework
+    platform: iOS
+    settings:
+      INFOPLIST_FILE: "Core/UI/Sources/Info.plist"
+      PRODUCT_BUNDLE_IDENTIFIER: com.module.UI
+    sources:
+      - "Core/UI/Sources"
+    dependencies:
+      - target: Utils
+
+  Utils:
+    type: framework
+    platform: iOS
+    settings:
+      INFOPLIST_FILE: "Core/Utils/Sources/Info.plist"
+      PRODUCT_BUNDLE_IDENTIFIER: com.module.Utils
+    sources:
+      - "Core/Utils/Sources"
+
+  # Feature Targes
+
+  Investing:
+    type: library.static
+    platform: iOS
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.module.investing
+    sources:
+      - Features/Investing/Sources
+    dependencies:
+      - target: UI
+      - target: Utils
+  
+  Cash:
+    type: library.static
+    platform: iOS
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.module.Cash
+    sources:
+      - Features/Cash/Sources
+    dependencies:
+      - target: UI
+      - target: Utils
+
+  History:
+    type: library.static
+    platform: iOS
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.module.History
+    sources:
+      - Features/History/Sources
+    dependencies:
+      - target: UI
+      - target: Utils
