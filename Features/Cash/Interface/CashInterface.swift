@@ -12,6 +12,7 @@ import UI
 public protocol CashInterface {
 
     func cashRouter() -> Router
+    func transactionRouter(id: String) -> Router
 }
 
 public final class CashModule {

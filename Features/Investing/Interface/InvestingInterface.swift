@@ -12,6 +12,7 @@ import UI
 public protocol InvestingInterface {
 
     func investingRouter() -> Router
+    func tradeRouter(id: String) -> Router
 }
 
 public final class InvestingModule {

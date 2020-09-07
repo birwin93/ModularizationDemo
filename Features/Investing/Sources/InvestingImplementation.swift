@@ -16,4 +16,8 @@ public final class InvestingImplementation: InvestingInterface {
     public func investingRouter() -> Router {
         return InvestingRouter()
     }
+
+    public func tradeRouter(id: String) -> Router {
+        return TraderRouter(id: id)
+    }
 }
