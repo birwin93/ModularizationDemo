@@ -6,6 +6,7 @@
 //  Copyright © 2020 ModuleDemo. All rights reserved.
 //
 
+import Context
 import HistoryInterface
 import UI
 import UIKit
@@ -36,7 +37,7 @@ class CashViewController: MenuViewController {
     }
 
     override func menuItems() -> [MenuItem] {
-        return HistoryModule.interface.menuItems(
+        return Context.shared.history.menuItems(
             for: [.transactions],
             from: router
         )

@@ -9,6 +9,7 @@
 import CashInterface
 import InvestingInterface
 import HistoryInterface
+import Context
 import UI
 
 public final class HistoryImplementation: HistoryInterface {
@@ -29,7 +30,7 @@ public final class HistoryImplementation: HistoryInterface {
                     items.append(MenuItem(
                         title: "Trade \(id)",
                         tapHandler: {
-                            InvestingModule.interface.tradeRouter(id: id).push(onto: router)
+                            Context.shared.investing.tradeRouter(id: id).push(onto: router)
                         }
                     ))
                 }
@@ -39,7 +40,7 @@ public final class HistoryImplementation: HistoryInterface {
                     items.append(MenuItem(
                         title: "Transaction \(id)",
                         tapHandler: {
-                            CashModule.interface.transactionRouter(id: id).push(onto: router)
+                            Context.shared.cash.transactionRouter(id: id).push(onto: router)
                         }
                     ))
                 }

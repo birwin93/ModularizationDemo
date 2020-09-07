@@ -6,6 +6,7 @@
 //  Copyright © 2020 ModuleDemo. All rights reserved.
 //
 
+import Context
 import Foundation
 import UI
 
@@ -15,12 +16,14 @@ public protocol InvestingInterface {
     func tradeRouter(id: String) -> Router
 }
 
-public final class InvestingModule {
+public extension ContainerKey {
+    static let investing: ContainerKey = "investing"
+}
 
-    public static var interface: InvestingInterface!
+extension Context {
 
-    public static func register(_ interface: InvestingInterface) {
-        self.interface = interface
+    public var investing: InvestingInterface {
+        return getObject(for: .investing) as! InvestingInterface
     }
 }
 

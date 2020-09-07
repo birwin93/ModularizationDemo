@@ -6,6 +6,7 @@
 //  Copyright © 2020 ModuleDemo. All rights reserved.
 //
 
+import Context
 import HistoryInterface
 import UI
 import UIKit
@@ -36,7 +37,7 @@ class HistoryViewController: MenuViewController {
     }
 
     override func menuItems() -> [MenuItem] {
-        HistoryModule.interface.menuItems(
+        Context.shared.history.menuItems(
             for: [.trades, .transactions],
             from: router
         )

@@ -6,6 +6,7 @@
 //  Copyright © 2020 ModuleDemo. All rights reserved.
 //
 
+import Context
 import Foundation
 import UI
 
@@ -15,11 +16,13 @@ public protocol CashInterface {
     func transactionRouter(id: String) -> Router
 }
 
-public final class CashModule {
+public extension ContainerKey {
+    static let cash: ContainerKey = "cash"
+}
 
-    public static var interface: CashInterface!
+extension Context {
 
-    public static func register(_ interface: CashInterface) {
-        self.interface = interface
+    public var cash: CashInterface {
+        return getObject(for: .cash) as! CashInterface
     }
 }

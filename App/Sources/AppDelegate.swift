@@ -12,6 +12,8 @@ import History
 import HistoryInterface
 import Investing
 import InvestingInterface
+
+import Context
 import UIKit
 
 @UIApplicationMain
@@ -20,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        CashModule.register(CashImplementation())
-        HistoryModule.register(HistoryImplementation())
-        InvestingModule.register(InvestingImplementation())
+        Context.shared.register(CashImplementation(), for: .cash)
+        Context.shared.register(HistoryImplementation(), for: .history)
+        Context.shared.register(InvestingImplementation(), for: .investing)
 
         return true
     }
