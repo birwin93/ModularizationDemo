@@ -35,6 +35,8 @@ class CashViewController: MenuViewController {
     }
 
     override func menuItems() -> [MenuItem] {
-        return []
+        return [
+            MenuItem(title: "See Deposit History", tapHandler: {})
+        ]
     }
 }

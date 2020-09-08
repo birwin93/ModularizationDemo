@@ -7,10 +7,11 @@
 //
 
 import Cash
+import CashInterface
 import History
+import HistoryInterface
 import Investing
-
-import Context
+import InvestingInterface
 import UIKit
 
 @UIApplicationMain
@@ -18,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        CashModule.register(CashImplementation())
+        HistoryModule.register(HistoryImplementation())
+        InvestingModule.register(InvestingImplementation())
 
         return true
     }
