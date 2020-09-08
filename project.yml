@@ -24,6 +24,7 @@ targets:
       - target: InvestingInterface
       - target: History
       - target: HistoryInterface
+      - target: Context
       - target: UI
       - target: Utils
   ModuleDemoTests:
@@ -35,6 +36,15 @@ targets:
       - target: ModuleDemo
 
   # Core Targets
+
+  Context:
+    type: framework
+    platform: iOS
+    settings:
+      INFOPLIST_FILE: "Core/Context/Sources/Info.plist"
+      PRODUCT_BUNDLE_IDENTIFIER: com.module.Context
+    sources:
+      - "Core/Context/Sources"
 
   UI:
     type: framework
@@ -66,6 +76,7 @@ targets:
     sources:
       - Features/Investing/Sources
     dependencies:
+      - target: HistoryInterface
       - target: InvestingInterface
       - target: UI
       - target: Utils
@@ -78,6 +89,7 @@ targets:
     sources:
       - Features/Investing/Interface
     dependencies:
+      - target: Context
       - target: UI
   
   Cash:
@@ -89,6 +101,7 @@ targets:
       - Features/Cash/Sources
     dependencies:
       - target: CashInterface
+      - target: HistoryInterface
       - target: UI
       - target: Utils
 
@@ -100,6 +113,7 @@ targets:
     sources:
       - Features/Cash/Interface
     dependencies:
+      - target: Context
       - target: UI
 
   History:
@@ -110,6 +124,8 @@ targets:
     sources:
       - Features/History/Sources
     dependencies:
+      - target: CashInterface
+      - target: InvestingInterface
       - target: HistoryInterface
       - target: UI
       - target: Utils
@@ -122,5 +138,6 @@ targets:
     sources:
       - Features/History/Interface
     dependencies:
+      - target: Context
       - target: UI
       

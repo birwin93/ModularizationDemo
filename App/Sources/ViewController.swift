@@ -9,6 +9,7 @@
 import CashInterface
 import HistoryInterface
 import InvestingInterface
+import Context
 import UI
 import UIKit
 
@@ -17,13 +18,13 @@ class ViewController: MenuViewController {
     override func menuItems() -> [MenuItem] {
         return [
             MenuItem(title: "Cash", tapHandler: {
-                CashModule.interface.cashRouter().push(onto: self.navigationController)
+                Context.shared.cash.cashRouter().push(onto: self.navigationController)
             }),
             MenuItem(title: "History", tapHandler: {
-                HistoryModule.interface.historyRouter().push(onto: self.navigationController)
+                Context.shared.history.historyRouter().push(onto: self.navigationController)
             }),
             MenuItem(title: "Investing", tapHandler: {
-                InvestingModule.interface.investingRouter().push(onto: self.navigationController)
+                Context.shared.investing.investingRouter().push(onto: self.navigationController)
             })
         ]
     }

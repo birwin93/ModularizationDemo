@@ -6,6 +6,7 @@
 //  Copyright © 2020 ModuleDemo. All rights reserved.
 //
 
+import Context
 import Foundation
 import UI
 
@@ -23,12 +24,14 @@ public protocol HistoryInterface {
     func menuItems(for types: [HistoryType], from router: Router) -> [MenuItem]
 }
 
-public final class HistoryModule {
+public extension ContainerKey {
+    static let history: ContainerKey = "history"
+}
 
-    public static var interface: HistoryInterface!
+extension Context {
 
-    public static func register(_ interface: HistoryInterface) {
-        self.interface = interface
+    public var history: HistoryInterface {
+        return getObject(for: .history) as! HistoryInterface
     }
 }
 
