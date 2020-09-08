@@ -19,8 +19,11 @@ targets:
       PRODUCT_BUNDLE_IDENTIFIER: "com.module.app"
     dependencies:
       - target: Cash
+      - target: CashInterface
       - target: Investing
+      - target: InvestingInterface
       - target: History
+      - target: HistoryInterface
       - target: UI
       - target: Utils
   ModuleDemoTests:
@@ -63,8 +66,19 @@ targets:
     sources:
       - Features/Investing/Sources
     dependencies:
+      - target: InvestingInterface
       - target: UI
       - target: Utils
+
+  InvestingInterface:
+    type: library.static
+    platform: iOS
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.module.InvestingInterface
+    sources:
+      - Features/Investing/Interface
+    dependencies:
+      - target: UI
   
   Cash:
     type: library.static
@@ -74,8 +88,19 @@ targets:
     sources:
       - Features/Cash/Sources
     dependencies:
+      - target: CashInterface
       - target: UI
       - target: Utils
+
+  CashInterface:
+    type: library.static
+    platform: iOS
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.module.CashInterface
+    sources:
+      - Features/Cash/Interface
+    dependencies:
+      - target: UI
 
   History:
     type: library.static
@@ -85,5 +110,17 @@ targets:
     sources:
       - Features/History/Sources
     dependencies:
+      - target: HistoryInterface
       - target: UI
       - target: Utils
+
+  HistoryInterface:
+    type: library.static
+    platform: iOS
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.module.HistoryInterface
+    sources:
+      - Features/History/Interface
+    dependencies:
+      - target: UI
+      

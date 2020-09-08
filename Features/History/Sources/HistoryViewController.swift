@@ -35,6 +35,8 @@ class HistoryViewController: MenuViewController {
     }
 
     override func menuItems() -> [MenuItem] {
-        return []
+        return [
+            MenuItem(title: "View More History", tapHandler: {})
+        ]
     }
 }

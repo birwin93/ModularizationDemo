@@ -35,7 +35,9 @@ class InvestingViewController: MenuViewController {
     }
 
     override func menuItems() -> [MenuItem] {
-        return []
+        return [
+            MenuItem(title: "Check Cash", tapHandler: {})
+        ]
     }
 }
 
