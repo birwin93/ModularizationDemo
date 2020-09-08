@@ -6,6 +6,7 @@
 //  Copyright © 2020 ModuleDemo. All rights reserved.
 //
 
+import HistoryInterface
 import UI
 import UIKit
 
@@ -35,8 +36,9 @@ class CashViewController: MenuViewController {
     }
 
     override func menuItems() -> [MenuItem] {
-        return [
-            MenuItem(title: "See Deposit History", tapHandler: {})
-        ]
+        return HistoryModule.interface.menuItems(
+            for: [.transactions],
+            from: router
+        )
     }
 }

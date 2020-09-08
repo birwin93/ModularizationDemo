@@ -6,6 +6,7 @@
 //  Copyright © 2020 ModuleDemo. All rights reserved.
 //
 
+import HistoryInterface
 import UI
 import UIKit
 
@@ -35,9 +36,10 @@ class InvestingViewController: MenuViewController {
     }
 
     override func menuItems() -> [MenuItem] {
-        return [
-            MenuItem(title: "Check Cash", tapHandler: {})
-        ]
+        return HistoryModule.interface.menuItems(
+            for: [.trades],
+            from: router
+        )
     }
 }
 

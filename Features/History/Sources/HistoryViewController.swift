@@ -6,6 +6,7 @@
 //  Copyright © 2020 ModuleDemo. All rights reserved.
 //
 
+import HistoryInterface
 import UI
 import UIKit
 
@@ -35,8 +36,9 @@ class HistoryViewController: MenuViewController {
     }
 
     override func menuItems() -> [MenuItem] {
-        return [
-            MenuItem(title: "View More History", tapHandler: {})
-        ]
+        HistoryModule.interface.menuItems(
+            for: [.trades, .transactions],
+            from: router
+        )
     }
 }

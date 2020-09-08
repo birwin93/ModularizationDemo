@@ -9,9 +9,18 @@
 import Foundation
 import UI
 
+/// This lives in the interface module since it's publicly available
+/// to other modules
+public enum HistoryType {
+    case transactions
+    case trades
+}
+
 public protocol HistoryInterface {
 
     func historyRouter() -> Router
+
+    func menuItems(for types: [HistoryType], from router: Router) -> [MenuItem]
 }
 
 public final class HistoryModule {

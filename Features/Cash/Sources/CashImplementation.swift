@@ -16,4 +16,8 @@ public final class CashImplementation: CashInterface {
     public func cashRouter() -> Router {
         return CashRouter()
     }
+
+    public func transactionRouter(id: String) -> Router {
+        return TransactionRouter(id: id)
+    }
 }
